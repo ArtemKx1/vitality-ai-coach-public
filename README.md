@@ -228,24 +228,80 @@ external cron.
 
 <h2 id="faq">❓ FAQ</h2>
 
-**Does this phone home?**
+<details>
+<summary>📱 <b>Which Garmin watches are supported?</b></summary>
+
+Any Garmin watch that syncs to **Garmin Connect** works — there is no device
+whitelist. Insights get richer with the metrics your watch records:
+
+- **Modern watches** (Venu, Vivoactive, Forerunner, Fenix/Epix, Instinct 2+)
+  feed the full stack: HRV, Body Battery, stress, SpO2, sleep stages, training
+  effect and VO2max.
+- **Basic trackers** (e.g. Vivosmart) provide steps, heart rate and sleep
+  basics.
+
+Fewer metrics just means fewer charts — the app still works on any Garmin.
+</details>
+
+<details>
+<summary>🔒 <b>Does this phone home?</b></summary>
+
 Only to the services you configure: your LLM provider and Garmin Connect (to
 sync your data). No telemetry.
+</details>
 
-**What happens to my Garmin password?**
+<details>
+<summary>🔑 <b>What happens to my Garmin password?</b></summary>
+
 It is encrypted with `APP_SECRET_KEY` and sent only to Garmin Connect when
-syncing.
+syncing. Chat history is encrypted too.
+</details>
 
-**Which models work?**
-Any OpenAI-compatible chat model. Local Ollama is fully free and private.
+<details>
+<summary>🧠 <b>Which LLM models work?</b></summary>
 
-**The wizard is gone / shows 403?**
+Any OpenAI-compatible chat model — Groq, OpenRouter, OpenAI, Mistral, or any
+custom endpoint. Local Ollama is fully free and private.
+</details>
+
+<details>
+<summary>⏱ <b>How often is my Garmin data synced?</b></summary>
+
+The built-in scheduler pulls your latest Garmin data in the background, so chat
+answers stay fresh without manual resyncs. For multi-instance setups, disable
+it (`SCHEDULER_ENABLED=false`) and trigger
+`/api/v1/internal/sync-all-active` from an external cron instead.
+</details>
+
+<details>
+<summary>💾 <b>Where is my data stored?</b></summary>
+
+Locally, in a SQLite database under `data/` (or any `DATABASE_URL` you set,
+e.g. Postgres). Garmin credentials and chat messages are Fernet-encrypted at
+rest.
+</details>
+
+<details>
+<summary>❄️ <b>Can I run it fully offline?</b></summary>
+
+Yes. Point `LLM_PROVIDER=ollama` at a local Ollama instance and nothing ever
+leaves your machine — no cloud LLM, no Garmin credential outside your box
+(except Garmin Connect when it syncs).
+</details>
+
+<details>
+<summary>🪄 <b>The wizard is gone / shows 403?</b></summary>
+
 Setup is only available before the first account is created. Change settings via
 environment variables afterwards.
+</details>
 
-**Can an AI agent install it for me?**
+<details>
+<summary>🤖 <b>Can an AI agent install it for me?</b></summary>
+
 Yes — see [Install with AI agents](#install-with-ai-agents). Claude Code, Codex
 and opencode read `AGENTS.md` automatically.
+</details>
 
 ---
 
