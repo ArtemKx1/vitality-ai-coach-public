@@ -2,7 +2,7 @@
 
 <img src="assets/screenshot.png" alt="Vitality AI Coach" width="100%" />
 
-# 💚 Vitality AI Coach for Garmin
+# <img src="https://1000logos.net/wp-content/uploads/2021/05/Garmin-logo-1536x864.png" alt="Garmin" width="200" align="middle" /> Vitality AI Coach for Garmin
 
 <p>
   <em>Self-hostable AI health & fitness coach — reads your <strong>Garmin Connect</strong> data and
