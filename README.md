@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/screenshot.png" alt="Vitality AI Coach" width="100%" />
+
 # 💚 Vitality AI Coach for Garmin
 
 <p>
@@ -19,7 +21,7 @@
 
 **100% self-hosted** &nbsp;·&nbsp; **bring your own model** &nbsp;·&nbsp; **zero-config wizard** &nbsp;·&nbsp; **no telemetry**
 
-<sub><a href="#features">✨ Features</a> · <a href="#screenshot">📸 Screenshot</a> · <a href="#install-with-ai-agents">🤖 AI Agents</a> · <a href="#one-command-docker">🚀 Docker</a> · <a href="#install-locally">📦 Local</a> · <a href="#configuration">⚙️ Config</a> · <a href="#local-model-ollama">🦙 Ollama</a> · <a href="#development">🛠 Dev</a> · <a href="#hosted-deployment">☁️ Hosted</a> · <a href="#privacy--security">🔒 Privacy</a> · <a href="#faq">❓ FAQ</a> · <a href="#license">📄 License</a></sub>
+<sub><a href="#features">✨ Features</a> · <a href="#install-with-ai-agents">🤖 AI Agents</a> · <a href="#one-command-docker">🚀 Docker</a> · <a href="#install-locally">📦 Local</a> · <a href="#configuration">⚙️ Config</a> · <a href="#local-model-ollama">🦙 Ollama</a> · <a href="#development">🛠 Dev</a> · <a href="#hosted-deployment">☁️ Hosted</a> · <a href="#privacy--security">🔒 Privacy</a> · <a href="#faq">❓ FAQ</a> · <a href="#license">📄 License</a></sub>
 
 </div>
 
@@ -36,14 +38,6 @@
   your account → connect Garmin → start chatting. No terminal gymnastics.
 - **📈 Data you actually care about** — sleep, HRV, training load, stress,
   recovery and body battery, explained in your own language.
-
----
-
-## 📸 Screenshot
-
-<p align="center">
-  <img src="assets/screenshot.png" alt="Vitality AI Coach — chat with your Garmin data" width="100%" />
-</p>
 
 ---
 
