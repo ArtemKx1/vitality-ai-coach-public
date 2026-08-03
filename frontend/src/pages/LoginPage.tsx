@@ -52,7 +52,6 @@ export function LoginPage() {
       description="Log in to your Vitality AI Coach account. Access your personalized AI health and fitness insights powered by your Garmin data."
       canonical="/login"
       activeTab="login"
-      footerText="By proceeding, you agree to the Terms of Service and Privacy Policy."
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-1.5">

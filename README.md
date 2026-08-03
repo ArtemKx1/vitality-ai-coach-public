@@ -149,10 +149,19 @@ docker run -p 8000:8000 -v "$PWD/data:/app/data" vitality-ai-coach
 
 ## Hosted deployment (example)
 
-`render.yaml` is a starting point for running it on Render: create a Blueprint,
-then set secrets (`APP_SECRET_KEY`, `DATABASE_URL`, LLM keys) in the dashboard
-— never in git. For multiple instances, disable the in-process scheduler and
-trigger `/api/v1/internal/sync-all-active` from an external cron.
+A prebuilt image is published to GHCR (`ghcr.io/artemkx1/vitality-ai-coach-public`).
+Run it directly:
+
+```bash
+docker run -d --name vitality-ai-coach -p 8000:8000 \
+  -v "$PWD/data:/app/data" \
+  ghcr.io/artemkx1/vitality-ai-coach-public:latest
+```
+
+Set secrets (`APP_SECRET_KEY`, `DATABASE_URL`, LLM keys) via environment
+variables or a `.env` file — never in git. For multiple instances, disable the
+in-process scheduler and trigger `/api/v1/internal/sync-all-active` from an
+external cron.
 
 ## Privacy & security
 

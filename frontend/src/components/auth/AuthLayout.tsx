@@ -11,10 +11,9 @@ interface AuthLayoutProps {
   canonical: string
   activeTab: "login" | "signup"
   children: ReactNode
-  footerText: string
 }
 
-export function AuthLayout({ title, description, canonical, activeTab, children, footerText }: AuthLayoutProps) {
+export function AuthLayout({ title, description, canonical, activeTab, children }: AuthLayoutProps) {
   return (
     <div className="min-h-screen bg-paper-white flex flex-col lg:flex-row w-full">
       <SEO title={title} description={description} canonical={canonical} />
@@ -60,7 +59,7 @@ export function AuthLayout({ title, description, canonical, activeTab, children,
 
           {children}
 
-          <AuthSocialSection footerText={footerText} />
+          <AuthSocialSection />
         </div>
       </div>
     </div>

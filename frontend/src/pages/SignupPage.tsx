@@ -55,7 +55,6 @@ export function SignupPage() {
       description="Create your free Vitality AI Coach account. Connect your Garmin watch and get personalized AI health and fitness coaching."
       canonical="/signup"
       activeTab="signup"
-      footerText="By creating an account, you agree to our Terms of Service and Privacy Policy."
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-1.5">

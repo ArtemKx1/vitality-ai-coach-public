@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useAuth } from "@/lib/auth"
 import { SEO } from "@/components/SEO"
 
@@ -47,7 +47,6 @@ export function ConnectGarminPage() {
   const navigate = useNavigate()
   const [garminEmail, setGarminEmail] = useState("")
   const [garminPassword, setGarminPassword] = useState("")
-  const [agreed, setAgreed] = useState(false)
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -61,7 +60,6 @@ export function ConnectGarminPage() {
     if (!garminEmail) return "Please enter your Garmin email"
     if (!garminEmail.includes("@") || !garminEmail.includes(".")) return "Enter a valid email address"
     if (!garminPassword) return "Please enter your Garmin password"
-    if (!agreed) return "You must agree to the Terms of Service and Privacy Policy"
     return ""
   }
 
@@ -143,21 +141,6 @@ export function ConnectGarminPage() {
               />
             </div>
 
-            <label className="flex items-start gap-3 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 w-4 h-4 rounded border-charcoal/30 bg-white/60 text-obsidian focus:ring-obsidian focus:ring-offset-0 cursor-pointer"
-              />
-              <span className="font-inter text-xs leading-relaxed text-charcoal/80">
-                I agree to the{" "}
-                <Link to="/terms" className="text-obsidian font-medium underline underline-offset-2 hover:no-underline">Terms of Service</Link>
-                {" "}and{" "}
-                <Link to="/privacy" className="text-obsidian font-medium underline underline-offset-2 hover:no-underline">Privacy Policy</Link>
-              </span>
-            </label>
-
             {error && <p className="text-sm font-inter text-error font-medium">{error}</p>}
 
             {loading ? (
@@ -185,7 +168,7 @@ export function ConnectGarminPage() {
             ) : (
               <button
                 type="submit"
-                disabled={!agreed}
+                disabled={loading}
                 className="w-full bg-obsidian text-paper-white font-inter text-sm font-semibold h-13 rounded-full hover:opacity-90 active:scale-[0.98] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed mt-1"
               >
                 Connect Garmin

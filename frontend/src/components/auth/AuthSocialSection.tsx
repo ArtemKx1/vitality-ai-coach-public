@@ -14,11 +14,7 @@ function friendlyMagicError(raw: string): string {
   return raw
 }
 
-interface AuthSocialSectionProps {
-  footerText: string
-}
-
-export function AuthSocialSection({ footerText }: AuthSocialSectionProps) {
+export function AuthSocialSection() {
   const [showMagicInput, setShowMagicInput] = useState(false)
   const [magicEmail, setMagicEmail] = useState("")
   const [magicLinkSent, setMagicLinkSent] = useState(false)
@@ -142,12 +138,10 @@ export function AuthSocialSection({ footerText }: AuthSocialSectionProps) {
               Send magic link
             </button>
           )}
-        </>
-        )}
-      </>)}
-      <p className="mt-6 text-center font-inter text-xs text-slate max-w-xs mx-auto leading-relaxed">
-        {footerText}
-      </p>
+      </>
+    )}
+    </>
+    )}
     </>
   )
 }

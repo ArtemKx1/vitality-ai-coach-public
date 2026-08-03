@@ -8,8 +8,6 @@ import { LoginPage } from "@/pages/LoginPage"
 import { SignupPage } from "@/pages/SignupPage"
 import { SetupPage } from "@/pages/SetupPage"
 import { AppPage } from "@/pages/AppPage"
-import { TermsPage } from "@/pages/TermsPage"
-import { PrivacyPage } from "@/pages/PrivacyPage"
 import { NotFoundPage } from "@/pages/NotFoundPage"
 
 export default function App() {
@@ -26,8 +24,6 @@ export default function App() {
             <Route path="/auth/callback" element={<AuthCallbackPage />} />
             <Route path="/connect-garmin" element={<ConnectGarminPage />} />
             <Route path="/app" element={<AppPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </ErrorBoundary>
