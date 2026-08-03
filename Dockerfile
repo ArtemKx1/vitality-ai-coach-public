@@ -44,4 +44,4 @@ EXPOSE $PORT
 
 USER appuser
 
-CMD exec uvicorn src.main:app --host 0.0.0.0 --port $PORT
+CMD ["sh", "-c", "exec uvicorn src.main:app --host 0.0.0.0 --port $PORT"]
