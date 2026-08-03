@@ -1,20 +1,108 @@
-# Vitality AI Coach for Garmin
+<div align="center">
 
-Self-hostable AI health & fitness coach that reads your **Garmin Connect** data
-and answers questions about your training, sleep, stress, recovery and body
-battery — in your own language, using the LLM of your choice.
+# 💚 Vitality AI Coach for Garmin
 
-- **100% self-hosted** — your Garmin credentials and chat history stay on your
-  machine (encrypted with `APP_SECRET_KEY`). Only the LLM provider you pick
-  ever sees your data.
-- **Bring your own model** — Groq, OpenRouter, OpenAI, Mistral, any
-  OpenAI-compatible endpoint, or **local Ollama** (fully offline).
-- **Zero-config setup** — first-run wizard in the browser: connect AI → create
-  your account → connect Garmin → start chatting. No terminal gymnastics.
+<p>
+  <em>Self-hostable AI health & fitness coach — reads your <strong>Garmin Connect</strong> data and
+  answers questions about training, sleep, stress, recovery and body battery.</em>
+</p>
+
+<p>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" /></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11+-blue" alt="Python 3.11+" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-20+-orange" alt="Node 20+" /></a>
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Compose-2496ED" alt="Docker Compose" /></a>
+  <a href="#hosted-deployment"><img src="https://img.shields.io/badge/Container-GHCR-000?logo=docker" alt="GHCR" /></a>
+  <a href="#install-with-ai-agents"><img src="https://img.shields.io/badge/🤖%20Install-Claude%20%7C%20Codex%20%7C%20opencode-4f46e5" alt="Install via AI agents" /></a>
+  <a href="https://github.com/ArtemKx1/vitality-ai-coach-public/stargazers"><img src="https://img.shields.io/github/stars/ArtemKx1/vitality-ai-coach-public?style=social" alt="GitHub stars" /></a>
+</p>
+
+**100% self-hosted** &nbsp;·&nbsp; **bring your own model** &nbsp;·&nbsp; **zero-config wizard** &nbsp;·&nbsp; **no telemetry**
+
+<sub><a href="#features">✨ Features</a> · <a href="#install-with-ai-agents">🤖 AI Agents</a> · <a href="#one-command-docker">🚀 Docker</a> · <a href="#install-locally">📦 Local</a> · <a href="#configuration">⚙️ Config</a> · <a href="#local-model-ollama">🦙 Ollama</a> · <a href="#development">🛠 Dev</a> · <a href="#hosted-deployment">☁️ Hosted</a> · <a href="#privacy--security">🔒 Privacy</a> · <a href="#faq">❓ FAQ</a> · <a href="#license">📄 License</a></sub>
+
+</div>
 
 ---
 
-## Install — locally (recommended)
+## ✨ Features
+
+- **🔒 100% self-hosted** — your Garmin credentials and chat history stay on your
+  machine (encrypted with `APP_SECRET_KEY`). Only the LLM provider you pick
+  ever sees your data.
+- **🧠 Bring your own model** — Groq, OpenRouter, OpenAI, Mistral, any
+  OpenAI-compatible endpoint, or **local Ollama** (fully offline).
+- **🪄 Zero-config setup** — first-run wizard in the browser: connect AI → create
+  your account → connect Garmin → start chatting. No terminal gymnastics.
+- **📈 Data you actually care about** — sleep, HRV, training load, stress,
+  recovery and body battery, explained in your own language.
+
+---
+
+## 🤖 Install with AI agents
+
+Clone the repo, then let **Claude Code**, **Codex** or **opencode** do the rest —
+they read [`AGENTS.md`](AGENTS.md) automatically:
+
+```bash
+git clone https://github.com/ArtemKx1/vitality-ai-coach-public.git
+cd vitality-ai-coach-public
+```
+
+| Agent | Command |
+|---|---|
+| **Claude Code** | `claude "Set up this repo and verify it runs locally"` |
+| **Codex** (OpenAI) | `codex "Set up this repo and verify it runs locally"` |
+| **opencode** | `opencode "Set up this repo and verify it runs locally"` |
+
+No CLI installed, or pasting into a chat? Copy this block into any AI agent
+(ChatGPT, Claude, Gemini…) with the repo already cloned:
+
+```text
+Set up Vitality AI Coach for Garmin locally and verify it runs.
+
+1. Backend: create a Python venv, install deps (`pip install -e ".[dev]"`),
+   and copy `.env.example` → `.env`.
+2. LLM: set an LLM_PROVIDER with a working key. Prefer Groq (free tier, no
+   credit card); if you have no key, leave it and tell me to use the browser
+   wizard or local Ollama instead.
+3. Frontend: `cd frontend && npm install && npm run build` (VITE_BASE=/).
+4. Start the server: `uvicorn src.main:app --host 0.0.0.0 --port 8000`.
+5. Verify: `GET /health` returns ok, and `GET /api/v1/setup/status` returns
+   `{"setup_required": true, ...}`.
+6. Tell me to open http://localhost:8000 for the first-run wizard.
+
+Rules: never commit `.env`; never touch `data/`; never regenerate
+APP_SECRET_KEY if one already exists.
+```
+
+---
+
+## 🚀 One-command install (Docker)
+
+**Requirements:** Docker with Compose v2.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ArtemKx1/vitality-ai-coach-public/main/start.sh -o start.sh
+bash start.sh
+```
+
+The script detects Docker, downloads the compose files, creates `.env` if
+needed, and starts the app — pulling the prebuilt image from GHCR, or building
+from source if the image isn't available yet. Then it opens
+**http://localhost:8000**.
+
+Manual equivalent (builds from source):
+
+```bash
+cp .env.example .env          # defaults are fine — the wizard handles the rest
+docker compose -f compose.build.yaml up -d --build
+open http://localhost:8000
+```
+
+---
+
+## 📦 Install locally
 
 **Requirements:** Python 3.11+ and Node 20+. A Garmin account. One LLM API key
 (free tiers work — e.g. Groq) or local Ollama.
@@ -50,56 +138,9 @@ you through:
 
 > Using `uv`? Then `uv sync` replaces the venv + pip steps.
 
-## Install — one command (Docker)
-
-**Requirements:** Docker with Compose v2.
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/ArtemKx1/vitality-ai-coach-public/main/start.sh -o start.sh
-bash start.sh
-```
-
-The script detects Docker, downloads the compose files, creates `.env` if
-needed, and starts the app — pulling the prebuilt image from GHCR, or building
-from source if the image isn't available yet. Then it opens
-**http://localhost:8000**.
-
-Manual equivalent (builds from source):
-
-```bash
-cp .env.example .env          # defaults are fine — the wizard handles the rest
-docker compose -f compose.build.yaml up -d --build
-open http://localhost:8000
-```
-
 ---
 
-## Let Claude / Codex set it up for you
-
-Copy this block and paste it into any AI coding agent (Claude, Codex, opencode)
-with the repo already cloned:
-
-```text
-Set up Vitality AI Coach for Garmin locally and verify it runs.
-
-1. Backend: create a Python venv, install deps (`pip install -e ".[dev]"`),
-   and copy `.env.example` → `.env`.
-2. LLM: set an LLM_PROVIDER with a working key. Prefer Groq (free tier, no
-   credit card); if you have no key, leave it and tell me to use the browser
-   wizard or local Ollama instead.
-3. Frontend: `cd frontend && npm install && npm run build` (VITE_BASE=/).
-4. Start the server: `uvicorn src.main:app --host 0.0.0.0 --port 8000`.
-5. Verify: `GET /health` returns ok, and `GET /api/v1/setup/status` returns
-   `{"setup_required": true, ...}`.
-6. Tell me to open http://localhost:8000 for the first-run wizard.
-
-Rules: never commit `.env`; never touch `data/`; never regenerate
-APP_SECRET_KEY if one already exists.
-```
-
----
-
-## Configuration
+## ⚙️ Configuration
 
 All settings come from environment variables (`.env`) or the setup wizard
 (which writes `data/config.json`). Key ones:
@@ -116,7 +157,9 @@ All settings come from environment variables (`.env`) or the setup wizard
 See `.env.example` for the full list. Optional features (push notifications,
 text-to-speech, social login) degrade gracefully when not configured.
 
-## Using a local model (Ollama)
+---
+
+## 🦙 Using a local model (Ollama)
 
 ```bash
 ollama pull gemma4:e4b          # or any model you like
@@ -126,7 +169,9 @@ docker compose -f compose.build.yaml up -d --build
 
 Fully offline: nothing leaves your machine.
 
-## Development
+---
+
+## 🛠 Development
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
@@ -140,14 +185,18 @@ cd frontend && npm install && npm run dev           # SPA (Vite dev server)
 Backend tests: `python3 -m pytest tests/ -q`. Pre-publish secret scan:
 `./scripts/check-secrets.sh`.
 
-## Building the image yourself
+---
+
+## 🐳 Building the image yourself
 
 ```bash
 docker build -t vitality-ai-coach .
 docker run -p 8000:8000 -v "$PWD/data:/app/data" vitality-ai-coach
 ```
 
-## Hosted deployment (example)
+---
+
+## ☁️ Hosted deployment
 
 A prebuilt image is published to GHCR (`ghcr.io/artemkx1/vitality-ai-coach-public`).
 Run it directly:
@@ -163,26 +212,42 @@ variables or a `.env` file — never in git. For multiple instances, disable the
 in-process scheduler and trigger `/api/v1/internal/sync-all-active` from an
 external cron.
 
-## Privacy & security
+---
+
+## 🔒 Privacy & security
 
 - Garmin credentials and chat history are Fernet-encrypted at rest.
 - `APP_SECRET_KEY` is generated on first boot (stored in `data/.secret`).
   Back it up — losing it makes stored data unrecoverable.
 - This app only ever talks to: your LLM provider, Garmin Connect (to sync your
-  data), and the services you explicitly configure. No telemetry.
+  data), and the services you explicitly configure. **No telemetry.**
 
-## FAQ
+---
 
-- **Does this phone home?** Only to the services you configure: your LLM
-  provider and Garmin Connect (to sync your data). No telemetry.
-- **What happens to my Garmin password?** It is encrypted with
-  `APP_SECRET_KEY` and sent only to Garmin Connect when syncing.
-- **Which models work?** Any OpenAI-compatible chat model. Local Ollama is
-  fully free and private.
-- **The wizard is gone / shows 403?** Setup is only available before the first
-  account is created. Change settings via environment variables afterwards.
+## ❓ FAQ
 
-## Project layout
+**Does this phone home?**
+Only to the services you configure: your LLM provider and Garmin Connect (to
+sync your data). No telemetry.
+
+**What happens to my Garmin password?**
+It is encrypted with `APP_SECRET_KEY` and sent only to Garmin Connect when
+syncing.
+
+**Which models work?**
+Any OpenAI-compatible chat model. Local Ollama is fully free and private.
+
+**The wizard is gone / shows 403?**
+Setup is only available before the first account is created. Change settings via
+environment variables afterwards.
+
+**Can an AI agent install it for me?**
+Yes — see [Install with AI agents](#install-with-ai-agents). Claude Code, Codex
+and opencode read `AGENTS.md` automatically.
+
+---
+
+## 📁 Project layout
 
 ```
 ├── src/                  # FastAPI backend (Python)
@@ -202,6 +267,8 @@ external cron.
 └── start.sh              # One-command installer
 ```
 
-## License
+---
+
+## 📄 License
 
 [MIT](LICENSE)
