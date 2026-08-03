@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-obsidian: #070709;
+  --color-paper-white: #ffffff;
+  --color-cloud-gray: #f5f5f5;
+  --color-sky-tint: #d7e6f5;
+  --color-charcoal: #60606c;
+  --color-slate: #8b8b8b;
+  --color-ink: #151515;
+  --color-surgical-blue: #2597d0;
+  --color-surface: #f9f9f9;
+  --color-surface-dim: #dadada;
+  --color-surface-bright: #f9f9f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f2f2;
+  --color-surface-container: #e8e8e8;
+  --color-outline: #78767b;
+  --color-outline-variant: #c8c5cb;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-background: #ffffff;
+  --color-foreground: #070709;
+  --color-card: #ffffff;
+  --color-card-foreground: #070709;
+  --color-primary: #070709;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #070709;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #60606c;
+  --color-accent: #2597d0;
+  --color-accent-foreground: #ffffff;
+  --color-border: #e2e2e2;
+  --color-input: #eeeeee;
+  --color-ring: #070709;
+
+  --font-inter: "Inter", sans-serif;
+
+  --spacing-13: 3.25rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 100px;
+}
+
+@keyframes progress {
+  0% { width: 10%; }
+  40% { width: 45%; }
+  70% { width: 70%; }
+  100% { width: 92%; }
+}
+
+.animate-progress {
+  animation: progress 45s ease-in-out forwards;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

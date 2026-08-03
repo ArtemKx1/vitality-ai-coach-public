@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /app
+Disallow: /auth/callback
+Disallow: /connect-garmin
+Disallow: /login
+Disallow: /signup
+

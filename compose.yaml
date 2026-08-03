@@ -1,0 +1,22 @@
+# Vitality AI Coach — one-command self-hosting
+#
+# Pulls the prebuilt image from GHCR. Building from source instead?
+# Use the override file:
+#   docker compose -f compose.build.yaml up -d --build
+services:
+  api:
+    image: ${COACH_IMAGE:-ghcr.io/artemkx1/vitality-ai-coach-public:latest}
+    container_name: vitality-ai-coach
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      PORT: 8000
+      FRONTEND_BASE: /
+      DATABASE_URL: sqlite:////app/data/garmin_coach.db
+      SCHEDULER_ENABLED: "true"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

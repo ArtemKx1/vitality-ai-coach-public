@@ -1,0 +1,49 @@
+[project]
+name = "garmin-ai-coach"
+version = "0.1.0"
+description = "AI-powered health & fitness coach for Garmin users"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.34,<1",
+    "bcrypt>=4.0,<5",
+    "python-jose[cryptography]>=3.3,<4",
+    "pydantic-settings>=2.6,<3",
+    "sqlalchemy>=2.0,<3",
+    "pydantic>=2.10,<3",
+    "httpx>=0.28,<1",
+    "garminconnect>=0.3,<1",
+    "garth>=0.5,<1",
+    "python-dotenv>=1.0,<2",
+    "langchain-core>=0.3,<1",
+    "langchain-openai>=0.3,<1",
+    "psycopg2-binary>=2.9,<3",
+    "firebase-admin>=6.6,<7",
+    "slowapi>=0.1.9,<1",
+    "google-cloud-texttospeech>=2.16,<3",
+    "python-multipart>=0.0.9,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+    "pytest-asyncio>=0.24,<1",
+    "ruff>=0.7,<1",
+    "mypy>=1.13,<2",
+    "httpx>=0.28,<1",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+strict = false
+python_version = "3.12"
+ignore_missing_imports = true

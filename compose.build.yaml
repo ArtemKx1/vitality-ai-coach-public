@@ -1,0 +1,33 @@
+# Build the image from local source (used during development / before a release).
+#   docker compose -f compose.build.yaml up -d --build
+services:
+  api:
+    build:
+      context: .
+      args:
+        VITE_BASE: ${VITE_BASE:-/}
+    container_name: vitality-ai-coach
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      PORT: 8000
+      FRONTEND_BASE: ${VITE_BASE:-/}
+      DATABASE_URL: sqlite:////app/data/garmin_coach.db
+      SCHEDULER_ENABLED: "true"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  # Optional: local LLM via Ollama. Uncomment to expose it to the app, then set
+  # LLM_PROVIDER=ollama and OLLAMA_HOST=http://ollama:11434 in your .env
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama:/root/.ollama
+  # volumes:
+  #   ollama:
