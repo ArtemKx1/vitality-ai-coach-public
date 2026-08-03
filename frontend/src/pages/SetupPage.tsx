@@ -98,7 +98,7 @@ export function SetupPage() {
           </p>
           <Link
             to="/login"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity"
           >
             Log in
           </Link>
@@ -206,9 +206,9 @@ export function SetupPage() {
                 >
                   {done ? "✓" : n}
                 </div>
-                <span className={`font-inter text-sm ${active || done ? "text-obsidian" : "text-charcoal"}`}>{label}</span>
+                <span className={`font-inter text-sm whitespace-nowrap ${active || done ? "text-obsidian" : "text-charcoal"}`}>{label}</span>
               </div>
-              {n < 3 && <div className={`w-10 h-px ${done ? "bg-surgical-blue" : "bg-outline-variant"}`} />}
+              {n < 3 && <div className={`hidden sm:block w-10 h-px ${done ? "bg-surgical-blue" : "bg-outline-variant"}`} />}
             </div>
           )
         })}
@@ -234,7 +234,7 @@ export function SetupPage() {
                       setModel(MODEL_HINTS[p.id] ?? "")
                       setTestResult(null)
                     }}
-                    className={`text-left p-4 rounded-2xl border transition-all ${
+                    className={`text-left p-4 rounded-xl border transition-all ${
                       selected
                         ? "border-surgical-blue bg-sky-tint/40 ring-1 ring-surgical-blue"
                         : "border-outline-variant/60 bg-surface-container-lowest hover:border-outline"
@@ -252,7 +252,7 @@ export function SetupPage() {
               })}
             </div>
 
-            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 space-y-4">
+            <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-5 space-y-4">
               {provider === "ollama" && (
                 <div className="space-y-1.5">
                   <label className="block font-inter text-xs font-medium text-charcoal ml-1">Ollama host</label>
@@ -260,7 +260,7 @@ export function SetupPage() {
                     type="text"
                     value={ollamaHost}
                     onChange={(e) => setOllamaHost(e.target.value)}
-                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                   />
                   <p className="font-inter text-xs text-slate ml-1">
                     Make sure Ollama is running and the model is pulled. In Docker use <code className="font-mono">http://ollama:11434</code>.
@@ -275,7 +275,7 @@ export function SetupPage() {
                     value={baseUrl}
                     onChange={(e) => setBaseUrl(e.target.value)}
                     placeholder="http://localhost:1234/v1"
-                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                   />
                 </div>
               )}
@@ -288,7 +288,7 @@ export function SetupPage() {
                     onChange={(e) => setApiKey(e.target.value)}
                     placeholder={provider === "openai_compatible" ? "Optional for local endpoints" : "sk-…"}
                     autoComplete="off"
-                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                   />
                 </div>
               )}
@@ -300,28 +300,28 @@ export function SetupPage() {
                     value={model}
                     onChange={(e) => setModel(e.target.value)}
                     placeholder={MODEL_HINTS[provider] ?? "model name"}
-                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                   />
                 </div>
               )}
 
               {testResult && (
                 <div
-                  className={`font-inter text-sm rounded-xl px-4 py-3 ${
+                  className={`font-inter text-sm rounded-lg px-4 py-3 ${
                     testResult.ok ? "bg-sky-tint/50 text-obsidian" : "bg-error-container text-error"
                   }`}
                 >
                   {testResult.msg}
                 </div>
               )}
-              {setupError && <div className="font-inter text-sm rounded-xl px-4 py-3 bg-error-container text-error">{setupError}</div>}
+              {setupError && <div className="font-inter text-sm rounded-lg px-4 py-3 bg-error-container text-error">{setupError}</div>}
 
               <div className="flex gap-3 pt-1">
                 <button
                   type="button"
                   onClick={handleTest}
                   disabled={testing}
-                  className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-outline-variant font-inter text-sm font-semibold text-obsidian hover:border-outline transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-outline-variant font-inter text-sm font-semibold text-obsidian hover:border-outline transition-colors disabled:opacity-50"
                 >
                   {testing ? "Testing…" : "Test connection"}
                 </button>
@@ -329,7 +329,7 @@ export function SetupPage() {
                   type="button"
                   onClick={handleSaveLLM}
                   disabled={saving}
-                  className="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-full bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity disabled:opacity-50"
+                  className="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-lg bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity disabled:opacity-50"
                 >
                   {saving ? "Saving…" : "Continue"}
                 </button>
@@ -344,7 +344,7 @@ export function SetupPage() {
             <p className="font-inter text-sm text-charcoal mb-8 text-center">
               Your Garmin data stays on this server, encrypted. Optionally connect Garmin now.
             </p>
-            <form onSubmit={handleRegister} className="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-5 space-y-4">
+            <form onSubmit={handleRegister} className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-5 space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="block font-inter text-xs font-medium text-charcoal ml-1" htmlFor="su-name">Full name</label>
@@ -354,7 +354,7 @@ export function SetupPage() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Jane Doe"
-                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -366,7 +366,7 @@ export function SetupPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
                     autoComplete="email"
-                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                    className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -379,7 +379,7 @@ export function SetupPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="At least 8 characters, with a letter and a number"
                   autoComplete="new-password"
-                  className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                  className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                 />
               </div>
 
@@ -394,7 +394,7 @@ export function SetupPage() {
                       value={garminEmail}
                       onChange={(e) => setGarminEmail(e.target.value)}
                       autoComplete="off"
-                      className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                      className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -405,7 +405,7 @@ export function SetupPage() {
                       value={garminPassword}
                       onChange={(e) => setGarminPassword(e.target.value)}
                       autoComplete="off"
-                      className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-xl font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
+                      className="w-full h-12 px-4 bg-paper-white border border-outline-variant/50 rounded-lg font-inter text-sm text-obsidian focus:border-surgical-blue focus:ring-1 focus:ring-surgical-blue outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -414,20 +414,20 @@ export function SetupPage() {
                 </p>
               </div>
 
-              {registerError && <div className="font-inter text-sm rounded-xl px-4 py-3 bg-error-container text-error">{registerError}</div>}
+              {registerError && <div className="font-inter text-sm rounded-lg px-4 py-3 bg-error-container text-error">{registerError}</div>}
 
               <div className="flex gap-3 pt-1">
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-outline-variant font-inter text-sm font-semibold text-obsidian hover:border-outline transition-colors"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-outline-variant font-inter text-sm font-semibold text-obsidian hover:border-outline transition-colors"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
                   disabled={registering}
-                  className="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-full bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity disabled:opacity-50"
+                  className="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-lg bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity disabled:opacity-50"
                 >
                   {registering ? "Creating account…" : "Create account & continue"}
                 </button>
@@ -449,7 +449,7 @@ export function SetupPage() {
             </p>
             <Link
               to="/app"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-obsidian text-paper-white font-inter text-sm font-semibold hover:opacity-80 transition-opacity"
             >
               Start chatting →
             </Link>
