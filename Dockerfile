@@ -4,7 +4,6 @@
 #
 # Build args:
 #   VITE_BASE      — SPA base path (default "/", i.e. self-host at the site root).
-#                    Use "/garmin-ai-coach" when hosting under a subpath (e.g. GitHub Pages).
 #   VITE_SITE_URL  — public origin used for canonical/OG tags (optional for self-host).
 
 # ── Stage 1: frontend ─────────────────────────────────────────────────────────

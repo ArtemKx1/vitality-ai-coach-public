@@ -17,7 +17,7 @@ export function SEO({
   title,
   description,
   canonical,
-  ogImage = `${SITE_URL}og-garmin-ai-coach.png`,
+  ogImage = `${SITE_URL}vitality-ai-logo.png`,
   ogType = "website",
   noindex = false,
   jsonLd,

@@ -1,5 +1,5 @@
 [project]
-name = "garmin-ai-coach"
+name = "vitality-ai-coach"
 version = "0.1.0"
 description = "AI-powered health & fitness coach for Garmin users"
 requires-python = ">=3.12"

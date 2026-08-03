@@ -87,7 +87,6 @@ class Settings(BaseSettings):
 
     # Base path where the built SPA is mounted (must match the frontend's VITE_BASE).
     # Self-host: "/" — the app is served at the site root.
-    # Hosted (e.g. GitHub Pages subpath): "/garmin-ai-coach".
     frontend_base: str = "/"
 
     runtime_config_path: str = "data/config.json"

@@ -422,7 +422,7 @@ wheels = [
 ]
 
 [[package]]
-name = "garmin-ai-coach"
+name = "vitality-ai-coach"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
