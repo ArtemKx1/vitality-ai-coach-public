@@ -27,7 +27,7 @@
 
 ---
 
-## ✨ Features
+<h2 id="features">✨ Features</h2>
 
 - **🔒 100% self-hosted** — your Garmin credentials and chat history stay on your
   machine (encrypted with `APP_SECRET_KEY`). Only the LLM provider you pick
@@ -41,7 +41,7 @@
 
 ---
 
-## 🤖 Install with AI agents
+<h2 id="install-with-ai-agents">🤖 Install with AI agents</h2>
 
 Clone the repo, then let **Claude Code**, **Codex** or **opencode** do the rest —
 they read [`AGENTS.md`](AGENTS.md) automatically:
@@ -80,7 +80,7 @@ APP_SECRET_KEY if one already exists.
 
 ---
 
-## 🚀 One-command install (Docker)
+<h2 id="one-command-docker">🚀 One-command install (Docker)</h2>
 
 **Requirements:** Docker with Compose v2.
 
@@ -104,7 +104,7 @@ open http://localhost:8000
 
 ---
 
-## 📦 Install locally
+<h2 id="install-locally">📦 Install locally</h2>
 
 **Requirements:** Python 3.11+ and Node 20+. A Garmin account. One LLM API key
 (free tiers work — e.g. Groq) or local Ollama.
@@ -142,7 +142,7 @@ you through:
 
 ---
 
-## ⚙️ Configuration
+<h2 id="configuration">⚙️ Configuration</h2>
 
 All settings come from environment variables (`.env`) or the setup wizard
 (which writes `data/config.json`). Key ones:
@@ -161,7 +161,7 @@ text-to-speech, social login) degrade gracefully when not configured.
 
 ---
 
-## 🦙 Using a local model (Ollama)
+<h2 id="local-model-ollama">🦙 Using a local model (Ollama)</h2>
 
 ```bash
 ollama pull gemma4:e4b          # or any model you like
@@ -173,7 +173,7 @@ Fully offline: nothing leaves your machine.
 
 ---
 
-## 🛠 Development
+<h2 id="development">🛠 Development</h2>
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
@@ -189,7 +189,7 @@ Backend tests: `python3 -m pytest tests/ -q`. Pre-publish secret scan:
 
 ---
 
-## 🐳 Building the image yourself
+<h2 id="building-the-image-yourself">🐳 Building the image yourself</h2>
 
 ```bash
 docker build -t vitality-ai-coach .
@@ -198,7 +198,7 @@ docker run -p 8000:8000 -v "$PWD/data:/app/data" vitality-ai-coach
 
 ---
 
-## ☁️ Hosted deployment
+<h2 id="hosted-deployment">☁️ Hosted deployment</h2>
 
 A prebuilt image is published to GHCR (`ghcr.io/artemkx1/vitality-ai-coach-public`).
 Run it directly:
@@ -216,7 +216,7 @@ external cron.
 
 ---
 
-## 🔒 Privacy & security
+<h2 id="privacy--security">🔒 Privacy &amp; security</h2>
 
 - Garmin credentials and chat history are Fernet-encrypted at rest.
 - `APP_SECRET_KEY` is generated on first boot (stored in `data/.secret`).
@@ -226,7 +226,7 @@ external cron.
 
 ---
 
-## ❓ FAQ
+<h2 id="faq">❓ FAQ</h2>
 
 **Does this phone home?**
 Only to the services you configure: your LLM provider and Garmin Connect (to
@@ -249,7 +249,7 @@ and opencode read `AGENTS.md` automatically.
 
 ---
 
-## 📁 Project layout
+<h2 id="project-layout">📁 Project layout</h2>
 
 ```
 ├── src/                  # FastAPI backend (Python)
@@ -271,6 +271,6 @@ and opencode read `AGENTS.md` automatically.
 
 ---
 
-## 📄 License
+<h2 id="license">📄 License</h2>
 
 [MIT](LICENSE)
