@@ -27,7 +27,7 @@
 
 <p align="center">
   💜 <strong>Enjoying Vitality AI Coach?</strong> Support the project — every tip is appreciated:<br/><br/>
-  <a href="https://ko-fi.com/artemkuprin"><img src="https://img.shields.io/badge/☕%20Buy%20me%20a%20coffee-ko--fi.com%2Fartemkuprin-FF5E5B" alt="Buy me a coffee on Ko-fi" /></a>
+  <a href="https://ko-fi.com/artemkuprin" target="_blank"><img src="assets/bmc-button.webp" alt="Buy me a coffee on Ko-fi" /></a>
 </p>
 
 ---
